@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://xkr1331fw47l"]
+
+[ext_resource type="PackedScene" uid="uid://cnmdrcanu8kxu" path="res://Scenes/Important Scenes/character_component.tscn" id="1_f7w7c"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_sdnvj"]
+
+[node name="Level 1" type="Node2D" unique_id=1713098255]
+
+[node name="Character Component" parent="." unique_id=434143201 instance=ExtResource("1_f7w7c")]
+position = Vector2(284, 388)
+
+[node name="Camera2D" type="Camera2D" parent="Character Component" unique_id=421856652]
+position = Vector2(1, 0)
+
+[node name="placeholder floor" type="StaticBody2D" parent="." unique_id=895746762]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="placeholder floor" unique_id=1752264817]
+position = Vector2(0, 555)
+shape = SubResource("WorldBoundaryShape2D_sdnvj")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=2026327843]
+offset_left = 366.0
+offset_top = 244.0
+offset_right = 406.0
+offset_bottom = 284.0

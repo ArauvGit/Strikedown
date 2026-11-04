@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://cnmdrcanu8kxu"]
+
+[ext_resource type="Texture2D" uid="uid://5aaq1hxojgnn" path="res://Assets/Sprites/character placeholder.png" id="1_3iutn"]
+[ext_resource type="Script" uid="uid://co57w0fjmyeja" path="res://Scripts/character_component.gd" id="1_446cg"]
+[ext_resource type="PackedScene" uid="uid://dxj0netjr7n4t" path="res://Scenes/Gameplay Components/collision_component.tscn" id="3_qrpae"]
+[ext_resource type="Script" uid="uid://cslxe5046r2xx" path="res://Scripts/movement_component.gd" id="4_6tiij"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sdnvj"]
+size = Vector2(32, 32)
+
+[node name="Player Component" type="CharacterBody2D" unique_id=434143201]
+script = ExtResource("1_446cg")
+
+[node name="sprite placeholder" type="Sprite2D" parent="." unique_id=1206761359]
+texture = ExtResource("1_3iutn")
+
+[node name="Collision Component" parent="." unique_id=1500877949 instance=ExtResource("3_qrpae")]
+shape = SubResource("RectangleShape2D_sdnvj")
+
+[node name="movement_component" type="Node2D" parent="." unique_id=1948403110]
+script = ExtResource("4_6tiij")
