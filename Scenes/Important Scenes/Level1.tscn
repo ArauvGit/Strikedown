@@ -1,6 +1,8 @@
 [gd_scene format=3 uid="uid://xkr1331fw47l"]
 
 [ext_resource type="PackedScene" uid="uid://cnmdrcanu8kxu" path="res://Scenes/Important Scenes/character_component.tscn" id="1_f7w7c"]
+[ext_resource type="Script" uid="uid://iobs4djaanwm" path="res://Scripts/input_component.gd" id="2_hdeyt"]
+[ext_resource type="Script" uid="uid://bhmodfss0xohj" path="res://Scripts/camera.gd" id="2_ronv5"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_sdnvj"]
 
@@ -9,8 +11,13 @@
 [node name="Character Component" parent="." unique_id=434143201 instance=ExtResource("1_f7w7c")]
 position = Vector2(284, 388)
 
-[node name="Camera2D" type="Camera2D" parent="Character Component" unique_id=421856652]
+[node name="Camera2D" type="Camera2D" parent="Character Component" unique_id=421856652 node_paths=PackedStringArray("character")]
 position = Vector2(1, 0)
+process_callback = 0
+position_smoothing_enabled = true
+position_smoothing_speed = 3.0
+script = ExtResource("2_ronv5")
+character = NodePath("..")
 
 [node name="placeholder floor" type="StaticBody2D" parent="." unique_id=895746762]
 
@@ -18,8 +25,15 @@ position = Vector2(1, 0)
 position = Vector2(0, 555)
 shape = SubResource("WorldBoundaryShape2D_sdnvj")
 
+[node name="input component" type="Node2D" parent="." unique_id=784684354]
+script = ExtResource("2_hdeyt")
+
 [node name="ColorRect" type="ColorRect" parent="." unique_id=2026327843]
 offset_left = 366.0
 offset_top = 244.0
 offset_right = 406.0
 offset_bottom = 284.0
+
+[connection signal="input_pressed" from="input component" to="Character Component/movement_component" method="on_input_pressed"]
+
+[editable path="Character Component"]

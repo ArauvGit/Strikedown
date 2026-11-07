@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://bljuc74u8wdsu"]
+
+[ext_resource type="Script" uid="uid://iobs4djaanwm" path="res://Scripts/input_component.gd" id="1_jmdey"]
+
+[node name="Input Component" type="Node2D" unique_id=828980733]
+script = ExtResource("1_jmdey")
