@@ -16,6 +16,6 @@ func _physics_process(delta: float) -> void:
 	
 func speed_setup(): 
 	if Input.is_anything_pressed():
-		self.position.x = character.velocity.normalized().x * 200
+		self.position.x = character.velocity.normalized().x * 150
 	else: 
 		self.position.x = move_toward(self.position.x, 0, 10)

@@ -2,7 +2,11 @@
 
 [ext_resource type="PackedScene" uid="uid://cnmdrcanu8kxu" path="res://Scenes/Important Scenes/character_component.tscn" id="1_f7w7c"]
 [ext_resource type="Script" uid="uid://iobs4djaanwm" path="res://Scripts/input_component.gd" id="2_hdeyt"]
+[ext_resource type="PackedScene" uid="uid://dxj0netjr7n4t" path="res://Scenes/Gameplay Components/collision_component.tscn" id="2_pvnn6"]
 [ext_resource type="Script" uid="uid://bhmodfss0xohj" path="res://Scripts/camera.gd" id="2_ronv5"]
+[ext_resource type="PackedScene" uid="uid://dfd53hbodlrx4" path="res://Scenes/Gameplay Components/movement_component.tscn" id="3_gq7aj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ef4di"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_sdnvj"]
 
@@ -10,6 +14,15 @@
 
 [node name="Character Component" parent="." unique_id=434143201 instance=ExtResource("1_f7w7c")]
 position = Vector2(284, 388)
+
+[node name="Collision Component" parent="Character Component" unique_id=1500877949 instance=ExtResource("2_pvnn6")]
+shape = SubResource("RectangleShape2D_ef4di")
+
+[node name="movement_component" parent="Character Component" unique_id=1436468275 instance=ExtResource("3_gq7aj")]
+
+[node name="input component" type="Node2D" parent="Character Component" unique_id=784684354]
+position = Vector2(-284, -388)
+script = ExtResource("2_hdeyt")
 
 [node name="Camera2D" type="Camera2D" parent="Character Component" unique_id=421856652 node_paths=PackedStringArray("character")]
 position = Vector2(1, 0)
@@ -25,15 +38,12 @@ character = NodePath("..")
 position = Vector2(0, 555)
 shape = SubResource("WorldBoundaryShape2D_sdnvj")
 
-[node name="input component" type="Node2D" parent="." unique_id=784684354]
-script = ExtResource("2_hdeyt")
-
 [node name="ColorRect" type="ColorRect" parent="." unique_id=2026327843]
 offset_left = 366.0
 offset_top = 244.0
 offset_right = 406.0
 offset_bottom = 284.0
 
-[connection signal="input_pressed" from="input component" to="Character Component/movement_component" method="on_input_pressed"]
+[connection signal="input_pressed" from="Character Component/input component" to="Character Component/movement_component" method="trigger"]
 
 [editable path="Character Component"]

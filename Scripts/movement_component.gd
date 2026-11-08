@@ -31,21 +31,17 @@ func squish(squish_value: Vector2):
 	create_tween().tween_property(parent, "scale", Vector2(1, 1), 0.1)
 
 func horizontal_movement(delta_time: float): 
-	var direction := Input.get_axis("game_move_left", "game_move_right")
+	var direction := Input.get_axis("game_move_left", "game_move_right") #keep like this for now, adjust when introducing enemies
 	if direction:
 		parent.velocity.x = direction * SPEED
 	else:
 		parent.velocity.x = move_toward(parent.velocity.x, 0, (SPEED / 25))
 func vertical_movement(): 
 	if parent.is_on_floor(): 
-		while parent.rotation_degrees <= 360: 
-			parent.rotation_degrees += 1 
-			await get_tree().create_timer(0.1).timeout 
-			
 		parent.velocity.y = JUMP_VELOCITY
 
 
-func on_input_pressed(input: Variant) -> void:
+func trigger(input: Variant) -> void:
 	print(input)
 	match input: 
 		var x when x == "game_jump": 
